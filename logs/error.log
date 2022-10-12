@@ -223,3 +223,8 @@
   level: 'error',
   timestamp: '2022-10-12T12:03:24.103Z'
 }
+{
+  message: '::1 : GET /generate-account 400 :BadRequestError User has a registered account: 3062470839 ',
+  level: 'error',
+  timestamp: '2022-10-12T15:04:56.443Z'
+}

@@ -57,25 +57,27 @@ class AccountController {
         next: NextFunction
     ) {
         try {
-            const chance = new Chance()
-            const randomAccountNo = chance.natural({ min: 3000000000, max: 3099999999 })
-            const [ isExisting ] = await accountServices.findOne({ account_number: randomAccountNo })
-
-            if (isExisting) {
-                return next(new BadRequestError(Messages.generateAccountError))
-            }
-
             const userID = res.locals.payload.id
             const [ userHasAccount ] = await accountServices.findOne({ user_id: userID })
 
             if (userHasAccount) {
                 return next(new BadRequestError(`User has a registered account: ${userHasAccount.account_number}`))
             }
+
+            const generateAccountNo = async () => {
+                const chance = new Chance()
+                const randomAccountNo = chance.natural({ min: 3000000000, max: 3099999999 })
+                const [ isExisting ] = await accountServices.findOne({ account_number: randomAccountNo })
+                if (isExisting) generateAccountNo()
+                return randomAccountNo
+            }
+
+            const newAccountNo = await generateAccountNo()
             
             res.status(200).json({
                 message: Messages.useRandomAccount, 
                 data: {
-                    "Account number": randomAccountNo
+                    "Account number": newAccountNo
                 }, 
                 status : true
             })
