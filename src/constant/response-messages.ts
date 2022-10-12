@@ -3,7 +3,10 @@ const responses = {
     apiHealth: "App is Healthy and Running Fine",
     serverError: "ERROR 500 : INTERNAL SERVER ERROR",
     userExist: "User already exists",
-    userAddedSuccess: "User added successfully"
+    userAddedSuccess: "User added successfully",
+    accountAdded: "Account added successfully",
+    useRandomAccount: "Use the randomly generated account number to create an account",
+    generateAccountError: "Sorry, we could not generate an account for you presently. Try again later"
 }
 
 export default responses

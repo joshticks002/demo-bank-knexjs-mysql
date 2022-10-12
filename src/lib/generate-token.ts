@@ -6,8 +6,9 @@ const { JWT: { secret, subject, issuer, expires } } = Config
 
 const generateToken = (data: Record<string,any>) => {
     try {
-        const { email, username } = data
+        const { id, email, username } = data
         const token = jwt.sign({
+            id,
             username,
             email
         }, secret, {

@@ -98,3 +98,48 @@
   level: 'error',
   timestamp: '2022-10-12T08:03:56.361Z'
 }
+{
+  message: '::1 : POST /hfugid 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T08:47:55.544Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError "username" is required ',
+  level: 'error',
+  timestamp: '2022-10-12T08:48:11.660Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError Passwords do not match ',
+  level: 'error',
+  timestamp: '2022-10-12T08:48:51.074Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError User already exists ',
+  level: 'error',
+  timestamp: '2022-10-12T08:48:57.136Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T09:06:51.464Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError Passwords do not match ',
+  level: 'error',
+  timestamp: '2022-10-12T09:07:39.457Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError "username" is required ',
+  level: 'error',
+  timestamp: '2022-10-12T09:08:04.525Z'
+}
+{
+  message: '::1 : POST /create-account 400 :BadRequestError Provide Account Number ',
+  level: 'error',
+  timestamp: '2022-10-12T10:00:33.088Z'
+}
+{
+  message: '::1 : POST /create-account 400 :BadRequestError User has a registered account: 3044164626 ',
+  level: 'error',
+  timestamp: '2022-10-12T10:05:24.902Z'
+}

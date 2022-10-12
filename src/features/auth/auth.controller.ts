@@ -39,11 +39,14 @@ class AuthController {
                 password: hashedPassword
             })
 
-            const userData = await userServices.findOne({id})
+            const [user] = await userServices.findOne({id})
 
             res.status(200).json({
                 message: Messages.userAddedSuccess, 
-                data: userData, 
+                data: {
+                    id: user.id,
+                    email: user.email
+                }, 
                 status : true
             })
         } catch (error: any) {
@@ -59,11 +62,11 @@ class AuthController {
         try {
             const { email, password } = req.body
 
-            if (!email && !password) {
+            if (!email || !password) {
                 return next(new BadRequestError("Invalid Login Credentials"))
             }
             
-            const [user] = await userServices.findOne({ email })
+            const [ user ] = await userServices.findOne({ email })
 
             if (!user) {
                 res.set("WWW-Authenticate", "Basic realm=Access to login token, charset=UTF-8")
@@ -76,9 +79,10 @@ class AuthController {
                 res.set("WWW-Authenticate", "Basic realm=Access to login token, charset=UTF-8")
                 return next( new NotAuthorizeError("Invalid Login Credentials"))
             }
-            const { name } = user
+            const { id, name } = user
             
             const tokenData: Record<string,any> = {
+                id,
                 email,
                 username: name
             }

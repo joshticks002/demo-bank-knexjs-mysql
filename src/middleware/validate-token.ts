@@ -39,6 +39,7 @@ const validateToken = async (
         
         res.locals.payload = payload
         res.locals.token = token
+
         next();
 
     } catch (error: any) {

@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import authRouter from "./features/auth/auth.routes";
+import accountRouter from "./features/accounts/accounts.routes";
 import validateToken from "./middleware/validate-token";
 
 const router = Router() 
@@ -18,5 +19,6 @@ router.get("/", (
 
 router.use(authRouter)
 router.use(validateToken)
+router.use(accountRouter)
 
 export default router
