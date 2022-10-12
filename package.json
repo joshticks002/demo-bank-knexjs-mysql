@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "devstart": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-        "start": "npx tsc && node ./dist/index.js",
+        "start": "node ./dist/index.js",
         "migrate": "npx tsc && knex migrate:latest --knexfile ./dist/loaders/knexfile.js --migrations-directory ../../migrations",
         "down": "npx tsc && knex migrate:rollback --knexfile ./dist/loaders/knexfile.js --migrations-directory ../../migrations",
         "test": "jest",
