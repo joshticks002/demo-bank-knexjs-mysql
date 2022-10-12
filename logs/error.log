@@ -1,0 +1,100 @@
+{
+  message: '::1 : GET /sign-up 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T07:27:32.511Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError "email" is required ',
+  level: 'error',
+  timestamp: '2022-10-12T07:27:46.973Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError Passwords do not match ',
+  level: 'error',
+  timestamp: '2022-10-12T07:29:06.493Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError User already exists ',
+  level: 'error',
+  timestamp: '2022-10-12T07:29:13.833Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError User already exists ',
+  level: 'error',
+  timestamp: '2022-10-12T07:30:04.650Z'
+}
+{
+  message: "::1 : POST /sign-up 500 :ApplicationError Error: insert into `users` (`email`, `id`, `password`, `username`) values ('jadeyemo002@gmail.com', 'b6661e2d-c2e2-42c4-8b6d-f3e9bc2d5160', '$2a$10$MT4YLEn2HymqvLJEgMzqIOVvAoARrMyd9r/QKw6kHrrU7wPd1Ymyq', 'James') - Unknown column 'username' in 'field list' ",
+  level: 'error',
+  timestamp: '2022-10-12T07:30:51.086Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError User already exists ',
+  level: 'error',
+  timestamp: '2022-10-12T07:34:51.175Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:44:40.276Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:44:57.938Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:45:37.570Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:45:58.928Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:46:01.843Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:47:12.212Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:47:54.794Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:47:57.639Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:49:18.441Z'
+}
+{
+  message: '::1 : POST /login 401 :UnauthorizeRequestError Invalid Login Credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T07:52:58.690Z'
+}
+{
+  message: '::1 : GET /pdjid 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T07:54:01.333Z'
+}
+{
+  message: '::1 : POST /logout 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T08:03:50.784Z'
+}
+{
+  message: '::1 : GET /logout 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T08:03:56.361Z'
+}
