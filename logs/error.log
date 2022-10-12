@@ -228,3 +228,33 @@
   level: 'error',
   timestamp: '2022-10-12T15:04:56.443Z'
 }
+{
+  message: '::1 : POST //sign-up 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T16:00:20.497Z'
+}
+{
+  message: '::1 : POST / 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T16:01:38.610Z'
+}
+{
+  message: '::1 : GET /sign-up 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T16:01:54.925Z'
+}
+{
+  message: '::1 : POST //sign-up 400 :BadRequestError Provide Authorization Header ',
+  level: 'error',
+  timestamp: '2022-10-12T16:02:03.646Z'
+}
+{
+  message: '::1 : POST /sign-up 400 :BadRequestError "email" is required ',
+  level: 'error',
+  timestamp: '2022-10-12T16:02:09.304Z'
+}
+{
+  message: '::1 : POST /transfer 400 :BadRequestError Invalid credentials ',
+  level: 'error',
+  timestamp: '2022-10-12T18:02:09.865Z'
+}

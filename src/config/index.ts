@@ -16,14 +16,21 @@ interface IDATABASE {
     user: string,
     password: string,
     dbTest: string,
+}
 
+interface PDATABASE {
+    database: string,
+    host: string,
+    user: string,
+    password: string,
 }
 
 interface IConfig {
     serverPort: string;
     saltFactor: number, 
     JWT: IJWT
-    Database: IDATABASE 
+    Database: IDATABASE;
+    Production: PDATABASE; 
 }
 
 
@@ -44,6 +51,12 @@ const Configuration: IConfig = {
         port: Number(process.env.MYSQL_PORT),
         user: process.env.MYSQL_USER as string,
         password: process.env.MYSQL_PASSWORD as string
+    },
+    Production: {
+        database: process.env.PRODUCTION_DATABASE as string,
+        host: process.env.PRODUCTION_HOST as string,
+        user: process.env.PRODUCTION_USERNAME as string,
+        password: process.env.PRODUCTION_PASSWORD as string
     }
 }
 

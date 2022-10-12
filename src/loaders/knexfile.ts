@@ -23,6 +23,22 @@ const config: { [key: string]: Knex.Config } = {
       directory: "../../migrations",
     }
   },
+
+  production: {
+    client: "mysql",
+    connection: {
+      host: configuration.Production.host,
+      port: db.port,
+      user: configuration.Production.user,
+      password: configuration.Production.password,
+      database: configuration.Production.database,
+    },
+    migrations: {
+      tableName: "migrations",
+      directory: "../../migrations",
+    },
+  },
+
   test: {
     client: "mysql2",
     connection: {
