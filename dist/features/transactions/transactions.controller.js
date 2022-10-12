@@ -14,17 +14,11 @@ class TransactionController {
         try {
             const { amount } = req.body;
             const { id } = res.locals.payload;
-            if (!amount || amount < 0) {
-                return next(new BadRequestError_1.default("Invalid funds"));
-            }
             const [userAccount] = await accountServices.findOne({ user_id: id });
-            if (!userAccount) {
-                return next(new BadRequestError_1.default(Messages.noAccount));
-            }
             await accountServices.update({ user_id: id }, { balance: userAccount.balance + amount });
             const [userAccountDetails] = await accountServices.findOne({ user_id: id });
             res.status(201).json({
-                message: "Fund deposited successfully",
+                message: "Funds deposited successfully",
                 data: {
                     "Account details": userAccountDetails
                 },
@@ -39,13 +33,7 @@ class TransactionController {
         try {
             const { amount } = req.body;
             const { id } = res.locals.payload;
-            if (!amount || amount < 0) {
-                return next(new BadRequestError_1.default("Invalid funds"));
-            }
             const [userAccount] = await accountServices.findOne({ user_id: id });
-            if (!userAccount) {
-                return next(new BadRequestError_1.default(Messages.noAccount));
-            }
             if (userAccount.balance < amount) {
                 return next(new BadRequestError_1.default("Insufficient funds"));
             }
