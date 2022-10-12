@@ -41,7 +41,7 @@ class AuthController {
 
             const [user] = await userServices.findOne({id})
 
-            res.status(200).json({
+            res.status(201).json({
                 message: Messages.userAddedSuccess, 
                 data: {
                     id: user.id,

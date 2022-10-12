@@ -1,11 +1,11 @@
 import { Router } from "express" 
-import authController from "./accounts.controller"
+import accountController from "./accounts.controller"
 
 const {
     createAccount,
     generateAccount,
     getAccount
-} = authController
+} = accountController
 
 const accountRouter = Router() 
 

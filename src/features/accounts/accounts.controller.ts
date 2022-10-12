@@ -5,7 +5,7 @@ import Constant from "../../constant";
 import BadRequestError from "../../common/error-handler/BadRequestError";
 import Chance from "chance"
 
-const userServices = new ModelService("users")
+
 const accountServices = new ModelService("accounts")
 const Messages = Constant.messages
 
@@ -39,7 +39,7 @@ class AccountController {
             await accountServices.create(data)
             const [ userAccountDetails ] = await accountServices.findOne({user_id: id})
             
-            res.status(200).json({
+            res.status(201).json({
                 message: Messages.accountAdded, 
                 data: {
                     "Account details": userAccountDetails
@@ -94,7 +94,7 @@ class AccountController {
             const [ userHasAccount ] = await accountServices.findOne({ user_id: userID })
 
             if (!userHasAccount) {
-                return next(new BadRequestError(`User has no registered account`))
+                return next(new BadRequestError(Messages.noAccount))
             }
             
             res.status(200).json({

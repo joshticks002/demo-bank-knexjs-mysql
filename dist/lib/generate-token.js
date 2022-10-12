@@ -32,10 +32,11 @@ const config_1 = __importDefault(require("../config"));
 const { JWT: { secret, subject, issuer, expires } } = config_1.default;
 const generateToken = (data) => {
     try {
-        const { email, username } = data;
+        const { id, email, username } = data;
         const token = jwt.sign({
-            email,
+            id,
             username,
+            email
         }, secret, {
             issuer: issuer,
             expiresIn: expires,

@@ -6,7 +6,8 @@ const responses = {
     userAddedSuccess: "User added successfully",
     accountAdded: "Account added successfully",
     useRandomAccount: "Use the randomly generated account number to create an account",
-    generateAccountError: "Sorry, we could not generate an account for you presently. Try again later"
+    generateAccountError: "Sorry, we could not generate an account for you presently. Try again later",
+    noAccount: "User does not have a registered account"
 }
 
 export default responses

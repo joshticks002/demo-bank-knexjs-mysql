@@ -4,16 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
+const index_1 = __importDefault(require("../config/index"));
 dotenv_1.default.config();
+const db = index_1.default.Database;
 const config = {
     development: {
         client: "mysql2",
         connection: {
-            database: "demo_bank",
-            host: "127.0.0.1",
-            port: 3306,
-            user: "root",
-            password: "twmjtgma012"
+            database: db.database,
+            host: db.host,
+            port: db.port,
+            user: db.user,
+            password: db.password
         },
         pool: {
             min: 2,
@@ -27,11 +29,11 @@ const config = {
     test: {
         client: "mysql2",
         connection: {
-            database: "bank_test",
-            host: "127.0.0.1",
-            port: 3306,
-            user: "root",
-            password: "twmjtgma012"
+            database: db.dbTest,
+            host: db.host,
+            port: db.port,
+            user: db.user,
+            password: db.password
         },
         migrations: {
             tableName: "migrations",

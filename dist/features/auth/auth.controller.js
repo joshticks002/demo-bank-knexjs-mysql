@@ -32,6 +32,7 @@ const bcrypt = __importStar(require("bcryptjs"));
 const config_1 = __importDefault(require("../../config"));
 const constant_1 = __importDefault(require("../../constant"));
 const NotAuthorizeError_1 = __importDefault(require("../../common/error-handler/NotAuthorizeError"));
+const generate_token_1 = __importDefault(require("../../lib/generate-token"));
 const BadRequestError_1 = __importDefault(require("../../common/error-handler/BadRequestError"));
 const uuid_1 = require("uuid");
 const userServices = new model_service_1.default("users");
@@ -41,7 +42,7 @@ class AuthController {
         try {
             const { username, email, password } = req.body;
             const isUser = await userServices.findOne({ email });
-            if (isUser) {
+            if (isUser.length) {
                 return next(new BadRequestError_1.default(Messages.userExist));
             }
             const salt = await bcrypt.genSalt(config_1.default.saltFactor);
@@ -49,56 +50,60 @@ class AuthController {
             const id = (0, uuid_1.v4)();
             await userServices.create({
                 id,
-                username,
+                name: username,
                 email,
                 password: hashedPassword
             });
-            const userData = await userServices.findOne({ id });
-            res.status(200).json({
+            const [user] = await userServices.findOne({ id });
+            res.status(201).json({
                 message: Messages.userAddedSuccess,
-                data: userData,
+                data: {
+                    id: user.id,
+                    email: user.email
+                },
                 status: true
             });
         }
         catch (error) {
-            return next(new ApplicationError_1.default(error));
+            return next(new ApplicationError_1.default(error.message));
         }
     }
     async handleLogin(req, res, next) {
         try {
             const { email, password } = req.body;
-            const user = await userServices.findOne({ email });
+            if (!email || !password) {
+                return next(new BadRequestError_1.default("Invalid Login Credentials"));
+            }
+            const [user] = await userServices.findOne({ email });
             if (!user) {
-                res.set("WWW-Authenticate", "Basic realm=Access to login token , charset=UTF-8");
+                res.set("WWW-Authenticate", "Basic realm=Access to login token, charset=UTF-8");
                 return next(new NotAuthorizeError_1.default("Invalid Login Credentials"));
             }
-            // const isCorrectPassword = await bcrypt.compare(password, user.password);
-            // if (!isCorrectPassword) {
-            //     res.set("WWW-Authenticate","Basic realm=Access to login token , charset=UTF-8")
-            //     return next( new NotAuthorizeError("Invalid Login Credentials"))
-            // }
-            // const { first_name , last_name } = user 
-            // const tokenData: Record<string,any> = {
-            //     id: user.id,
-            //     email,
-            //     firstName : first_name,
-            //     lastName : last_name
-            // }
-            // const token = generateToken(tokenData) as string
-            // const userDetails: Record<string,any> = {
-            //     id: user.id, 
-            //     email, 
-            //     firstName: first_name, 
-            //     lastName: last_name
-            // }
-            // res.status(200).json({
-            //     message: "Login successfully", 
-            //     data: {
-            //         token, 
-            //         user : userDetails
-            //     } , 
-            //     status : true
-            // })
+            const isCorrectPassword = await bcrypt.compare(password, user.password);
+            if (!isCorrectPassword) {
+                res.set("WWW-Authenticate", "Basic realm=Access to login token, charset=UTF-8");
+                return next(new NotAuthorizeError_1.default("Invalid Login Credentials"));
+            }
+            const { id, name } = user;
+            const tokenData = {
+                id,
+                email,
+                username: name
+            };
+            const token = (0, generate_token_1.default)(tokenData);
+            const userDetails = {
+                id: user.id,
+                username: name,
+                email,
+            };
+            res.status(200).json({
+                message: "Login successfully",
+                data: {
+                    token,
+                    user: userDetails
+                },
+                status: true
+            });
         }
         catch (error) {
             return next(new ApplicationError_1.default(error));
