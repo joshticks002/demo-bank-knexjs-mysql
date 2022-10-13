@@ -6,7 +6,7 @@ funds transfer and balance check
 
 ##
 
-- [API URL](https://josh.herokuapp.com/)
+- [API URL](https://joshua-adeyemo-lendsqr-be-test.herokuapp.com/)
 - [github repo](https://github.com/joshticks002/demo-bank-knexjs-mysql)
 
 ## Tech Stack
